@@ -26,22 +26,27 @@ export default function Login() {
     if (!name.match(alphanumeric)) {
       setError("Name is not alphanumeric");
       setName("");
+      return;
     }
     if (email.indexOf("@") === -1) {
       setError("Email must contain @");
       setName("");
+      return;
     }
     if (!gender === "male" || !gender === "female" || !gender === "other") {
       setError("Please identify as male, female or others");
       setName("");
+      return;
     }
     if (!phoneNumber.match(digits)) {
       setError("Phone Number must contain only numbers");
       setName("");
+      return;
     }
     if (password.length < 6) {
       setError("Password must contain atleast 6 letters");
       setName("");
+      return;
     }
     let username = email.substring(0, email.indexOf("@"));
     setName(username);
