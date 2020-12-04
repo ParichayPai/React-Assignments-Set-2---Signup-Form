@@ -9,8 +9,47 @@ export default function Login() {
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
 
-  const handleSubmit = (e, name, email, gender, phoneNumber, password) => {
-    e.preventDefault();
+  const handleSubmit = (name, email, gender, phoneNumber, password) => {
+    const alphanumeric = /^[0-9a-zA-Z ]+$/;
+    var digits = /^[0-9]+$/;
+    if (
+      name === "" ||
+      email === "" ||
+      phoneNumber === "" ||
+      gender === "" ||
+      password === ""
+    ) {
+      setError("All fields are mandatory");
+      setName("");
+      return;
+    }
+    if (!name.match(alphanumeric)) {
+      setError("Name is not alphanumeric");
+      setName("");
+    }
+    if (email.indexOf("@") === -1) {
+      setError("Email must contain @");
+      setName("");
+    }
+    if (!gender === "male" || !gender === "female" || !gender === "other") {
+      setError("Please identify as male, female or others");
+      setName("");
+    }
+    if (!phoneNumber.match(digits)) {
+      setError("Phone Number must contain only numbers");
+      setName("");
+    }
+    if (password.length < 6) {
+      setError("Password must contain atleast 6 letters");
+      setName("");
+    }
+    let username = email.substring(0, email.indexOf("@"));
+    setName(username);
+    setEmail("");
+    setGender("male");
+    setPassword("");
+    setPhoneNumber("");
+    setError("");
   };
 
   return (
@@ -69,6 +108,8 @@ export default function Login() {
       >
         Submit
       </button>
+      {error && <div>{error}</div>}
+      {name && <div>Hello {name}</div>}
     </>
   );
 }
