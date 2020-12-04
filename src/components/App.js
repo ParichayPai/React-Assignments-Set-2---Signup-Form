@@ -30,6 +30,7 @@ const App = () => {
   return (
     <div id="main">
       <form
+        id="Form-Application"
         onSubmit={() =>
           handleSubmit(name, email, gender, phoneNumber, password)
         }
