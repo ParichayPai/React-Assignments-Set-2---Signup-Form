@@ -109,7 +109,7 @@ export default function Login() {
         Submit
       </button>
       {error && <div>{error}</div>}
-      {name && <div>Hello {name}</div>}
+      {error && name && <div>Hello {name}</div>}
     </>
   );
 }
