@@ -95,7 +95,7 @@ export default function Login() {
       <label>
         Password:
         <input
-          type="text"
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           data-testid="password"
